@@ -166,4 +166,7 @@
       <Name>Ventas</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\noProduct.png" />
+  </ItemGroup>
 </Project>
