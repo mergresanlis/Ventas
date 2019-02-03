@@ -70,6 +70,42 @@ namespace Ventas.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Add Product..
+        /// </summary>
+        internal static string AddProduct {
+            get {
+                return ResourceManager.GetString("AddProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Touch the image to change.
+        /// </summary>
+        internal static string ChangeImage {
+            get {
+                return ResourceManager.GetString("ChangeImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Description.
+        /// </summary>
+        internal static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter the product description ....
+        /// </summary>
+        internal static string DescriptionPlaceholder {
+            get {
+                return ResourceManager.GetString("DescriptionPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error.
         /// </summary>
         internal static string Error {
@@ -88,11 +124,47 @@ namespace Ventas.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Price.
+        /// </summary>
+        internal static string Price {
+            get {
+                return ResourceManager.GetString("Price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter the product price....
+        /// </summary>
+        internal static string PricePlaceholder {
+            get {
+                return ResourceManager.GetString("PricePlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Products.
         /// </summary>
         internal static string Products {
             get {
                 return ResourceManager.GetString("Products", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Remarks.
+        /// </summary>
+        internal static string Remarks {
+            get {
+                return ResourceManager.GetString("Remarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Save.
+        /// </summary>
+        internal static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
         
