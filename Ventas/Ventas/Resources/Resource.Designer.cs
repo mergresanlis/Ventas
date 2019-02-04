@@ -79,6 +79,15 @@ namespace Ventas.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Cancel.
+        /// </summary>
+        internal static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Touch the image to change.
         /// </summary>
         internal static string ChangeImage {
@@ -120,6 +129,33 @@ namespace Ventas.Resources {
         internal static string Error {
             get {
                 return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a From gallery.
+        /// </summary>
+        internal static string FromGallery {
+            get {
+                return ResourceManager.GetString("FromGallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Where do you take the picture?.
+        /// </summary>
+        internal static string ImageSource {
+            get {
+                return ResourceManager.GetString("ImageSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Take a new picture.
+        /// </summary>
+        internal static string NewPicture {
+            get {
+                return ResourceManager.GetString("NewPicture", resourceCulture);
             }
         }
         
