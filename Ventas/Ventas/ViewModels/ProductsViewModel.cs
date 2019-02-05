@@ -1,5 +1,6 @@
 ﻿namespace Ventas.ViewModels
 {
+    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
@@ -19,6 +20,8 @@
         #endregion
 
         #region Properties
+        public List<Product> MyProducts { get; set; }
+
         public bool IsRefreshing
         {
             get { return this.isRefreshing; }
@@ -80,8 +83,14 @@
                 return;
             }
 
-            var list = (List<Product>)response.Result;
-            var myListy = list.Select(p => new ProductItemViewModel
+            this.MyProducts = (List<Product>)response.Result;
+            this.RefreshList();
+            IsRefreshing = false;
+        }
+
+        public void RefreshList()
+        {
+            var myListyProductItemViewModel = MyProducts.Select(p => new ProductItemViewModel
             {
                 Description = p.Description,
                 ImageArray = p.ImageArray,
@@ -93,9 +102,10 @@
                 Remarks = p.Remarks,
             });
 
-            this.Products = new ObservableCollection<ProductItemViewModel>(myListy);
-            IsRefreshing = false;
+            this.Products = new ObservableCollection<ProductItemViewModel>(
+                myListyProductItemViewModel.OrderBy(p => p.Description));
         }
+
         #endregion
 
         #region Commands
