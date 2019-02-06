@@ -13,6 +13,7 @@
     using Domain.Models;
     using Ventas.API.Helpers;
 
+    [Authorize]
     public class ProductsController : ApiController
     {
         private DataContext db = new DataContext();

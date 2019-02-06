@@ -12,6 +12,7 @@
             <x:String x:Key="UrlAPI">http://www.prowebcol.com/sites/apiventas</x:String>
             <x:String x:Key="Prefix">/api</x:String>
             <x:String x:Key="Controller">/Products</x:String>
+            <x:String x:Key="UrlUsersController">/Users</x:String>
             
         </ResourceDictionary>
 

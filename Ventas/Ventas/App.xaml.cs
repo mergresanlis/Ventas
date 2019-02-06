@@ -1,17 +1,32 @@
-﻿using Ventas.Views;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Ventas
 {
+    using Views;
+    using ViewModels;
+    using Ventas.Helpers;
+
     public partial class App : Application
     {
+        public static NavigationPage Navigator { get; internal set; }
+
         public App()
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new ProductsPage());
+            if (Settings.IsRemembered && !string.IsNullOrEmpty(Settings.AccessToken))
+            {
+                MainViewModel.GetInstance().Products = new ProductsViewModel();
+                MainPage = new MasterPage();
+            }
+            else
+            {
+                MainViewModel.GetInstance().Login = new LoginViewModel();
+                MainPage = new NavigationPage(new LoginPage());
+            }
+
         }
 
         protected override void OnStart()

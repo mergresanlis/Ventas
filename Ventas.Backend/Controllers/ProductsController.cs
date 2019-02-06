@@ -10,6 +10,7 @@
     using Common.Models;
     using Helpers;
 
+    [Authorize]
     public class ProductsController : Controller
     {
         private LocalDataContext db = new LocalDataContext();

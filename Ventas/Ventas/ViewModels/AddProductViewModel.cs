@@ -183,7 +183,7 @@
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["Prefix"].ToString();
             var controller = Application.Current.Resources["Controller"].ToString();
-            var response = await this.apiService.Post(url, prefix, controller, product);
+            var response = await this.apiService.Post(url, prefix, controller, product, Settings.TokenType, Settings.AccessToken);
             if (!response.IsSuccess)
             {
                 this.IsRunning = false;
@@ -202,7 +202,7 @@
             this.IsRunning = true;
             this.IsEnabled = false;
 
-            await Application.Current.MainPage.Navigation.PopAsync();
+            await App.Navigator.PopAsync();
 
         }
 
