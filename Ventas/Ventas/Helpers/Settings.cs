@@ -22,6 +22,7 @@
 
         private const string tokenType = "TokenType";
         private const string accessToken = "AccessToken";
+        private const string userASP = "UserASP";
         private const string isRemembered = "IsRemembered";
         private static readonly string stringDefault = string.Empty;
         private static readonly bool booleanDefault = false;
@@ -50,6 +51,18 @@
             set
             {
                 AppSettings.AddOrUpdateValue(accessToken, value);
+            }
+        }
+
+        public static string UserASP
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(userASP, stringDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(userASP, value);
             }
         }
 

@@ -202,7 +202,7 @@
     <value>Buscar</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>Inicio de sesión:</value>
+    <value>Inicio de sesión</value>
   </data>
   <data name="EMail" xml:space="preserve">
     <value>Correo electrónico</value>

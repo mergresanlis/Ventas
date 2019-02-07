@@ -1,20 +1,17 @@
-﻿using System;
-
-using Android.App;
-using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Android.OS;
-using Plugin.Permissions;
-using Plugin.CurrentActivity;
-
-namespace Ventas.Droid
+﻿namespace Ventas.Droid
 {
+    using Android.App;
+    using Android.Content.PM;
+    using Android.OS;
+    using Android.Runtime;
+    using ImageCircle.Forms.Plugin.Droid;
+    using Plugin.CurrentActivity;
+    using Plugin.Permissions;
+
     [Activity(Label = "Ventas", 
-        Icon = "@mipmap/icon", 
+        Icon = "@drawable/ic_launcher", 
         Theme = "@style/MainTheme", 
-        MainLauncher = true, 
+        MainLauncher = false, 
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
@@ -25,6 +22,7 @@ namespace Ventas.Droid
 
             base.OnCreate(savedInstanceState);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
+            ImageCircleRenderer.Init();
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
