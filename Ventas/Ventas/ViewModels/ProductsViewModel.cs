@@ -23,6 +23,12 @@
         #endregion
 
         #region Properties
+        public Category Category
+        {
+            get;
+            set;
+        }
+
         public string Filter
         {
             get { return this.filter; }
@@ -50,12 +56,24 @@
         #endregion
 
         #region Constructors
-        public ProductsViewModel()
+        //public ProductsViewModel()
+        //{
+        //    instance = this;
+        //    this.apiService = new ApiService();
+        //    this.dataService = new DataService();
+        //    //this.LoadProducts();
+        //    this.LoadProductsxCategory();
+
+        //}
+
+        public ProductsViewModel(Category category)
         {
             instance = this;
+            this.Category = category;
             this.apiService = new ApiService();
             this.dataService = new DataService();
-            this.LoadProducts();
+            //this.LoadProducts();
+            this.LoadProductsxCategory();
         }
         #endregion
 
@@ -64,10 +82,10 @@
 
         public static ProductsViewModel GetInstance()
         {
-            if (instance == null)
-            {
-                return new ProductsViewModel();
-            }
+            //if (instance == null)
+            //{
+            //    return new ProductsViewModel();
+            //}
 
             return instance;
         }
@@ -123,6 +141,27 @@
             this.IsRefreshing = false;
         }
 
+        private async void LoadProductsxCategory()
+        {
+            this.IsRefreshing = true;
+
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                this.IsRefreshing = false;
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
+                return;
+            }
+
+            var answer = await this.LoadProductsxCategoryFromAPI();
+            if (answer)
+            {
+                this.RefreshList();
+            }
+
+            this.IsRefreshing = false;
+        }
+
         private async Task LoadProductsFromDB()
         {
             this.MyProducts = await this.dataService.GetAllProducts();
@@ -149,6 +188,21 @@
             return true;
         }
 
+        private async Task<bool> LoadProductsxCategoryFromAPI()
+        {
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var prefix = Application.Current.Resources["Prefix"].ToString();
+            var controller = Application.Current.Resources["Controller"].ToString();
+            var response = await this.apiService.GetList<Product>(url, prefix, controller, this.Category.CategoryId, Settings.TokenType, Settings.AccessToken);
+            if (!response.IsSuccess)
+            {
+                return false;
+            }
+
+            this.MyProducts = (List<Product>)response.Result;
+            return true;
+        }
+
         public void RefreshList()
         {
             if (string.IsNullOrEmpty(this.Filter))
@@ -163,6 +217,8 @@
                     ProductId = p.ProductId,
                     PublishOn = p.PublishOn,
                     Remarks = p.Remarks,
+                    CategoryId = p.CategoryId,
+                    UserId = p.UserId,
                 });
 
                 this.Products = new ObservableCollection<ProductItemViewModel>(
@@ -180,6 +236,8 @@
                     ProductId = p.ProductId,
                     PublishOn = p.PublishOn,
                     Remarks = p.Remarks,
+                    CategoryId = p.CategoryId,
+                    UserId = p.UserId,
                 }).Where(p => p.Description.ToLower().Contains(this.Filter.ToLower())).ToList();
 
                 this.Products = new ObservableCollection<ProductItemViewModel>(

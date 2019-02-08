@@ -11,13 +11,15 @@
     public class MainViewModel
     {
         #region Properties
-        public LoginViewModel Login { get; set; }
-
         public EditProductViewModel EditProduct { get; set; }
 
         public ProductsViewModel Products { get; set; }
 
         public AddProductViewModel AddProduct { get; set; }
+
+        public LoginViewModel Login { get; set; }
+
+        public CategoriesViewModel Categories { get; set; }
 
         public RegisterViewModel Register { get; set; }
 

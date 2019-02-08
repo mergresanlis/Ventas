@@ -25,16 +25,27 @@
         }
 
         // GET: api/Products/5
+        //Trae solo el producto solicitado
+        //[ResponseType(typeof(Product))]
+        //public async Task<IHttpActionResult> GetProductxId(int id)
+        //{
+        //    var product = await this.db.Products.FindAsync(id);
+        //    if (product == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return Ok(product); //Este ok devuelve Json del modelo
+        //}
+
+        // GET: api/Products/5
+        //Trae todos los productos de la categoria solicitada
         [ResponseType(typeof(Product))]
         public async Task<IHttpActionResult> GetProduct(int id)
         {
-            Product product = await this.db.Products.FindAsync(id);
-            if (product == null)
-            {
-                return NotFound();
-            }
+            var products = await this.db.Products.Where(p => p.CategoryId == id).ToListAsync();
 
-            return Ok(product); //Este ok devuelve Json del modelo
+            return Ok(products); //Este ok devuelve Json del modelo
         }
 
         // PUT: api/Products/5

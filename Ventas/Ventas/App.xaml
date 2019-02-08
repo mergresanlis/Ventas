@@ -13,6 +13,7 @@
             <x:String x:Key="Prefix">/api</x:String>
             <x:String x:Key="Controller">/Products</x:String>
             <x:String x:Key="UrlUsersController">/Users</x:String>
+            <x:String x:Key="UrlCategoriesController">/Categories</x:String>
 
             <!-- Facebook -->
             <x:String x:Key="FacebookAppID">2039765449441453</x:String>
