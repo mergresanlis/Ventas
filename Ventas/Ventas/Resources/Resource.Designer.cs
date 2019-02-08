@@ -115,6 +115,42 @@ namespace Ventas.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Categories.
+        /// </summary>
+        internal static string Categories {
+            get {
+                return ResourceManager.GetString("Categories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Category.
+        /// </summary>
+        internal static string Category {
+            get {
+                return ResourceManager.GetString("Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You must select a category..
+        /// </summary>
+        internal static string CategoryError {
+            get {
+                return ResourceManager.GetString("CategoryError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Select the category....
+        /// </summary>
+        internal static string CategoryPlaceholder {
+            get {
+                return ResourceManager.GetString("CategoryPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Touch the image to change.
         /// </summary>
         internal static string ChangeImage {

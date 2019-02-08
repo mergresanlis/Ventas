@@ -3,11 +3,14 @@
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using Newtonsoft.Json;
 
     public class Product
     {
         [Key]
         public int ProductId { get; set; }
+
+        public int? CategoryId { get; set; } //Luego de crear las categorias y asignarselas a los productos se debe actualizar esta propieda porque no puede permitir nulls
 
         [Required]
         [StringLength(50)]
@@ -28,6 +31,13 @@
         [Display(Name = "Publish On")]
         [DataType(DataType.Date)]
         public DateTime PublishOn { get; set; }
+
+        [Required]
+        [StringLength(128)]
+        public string UserId { get; set; } //Es un Guid, esta definido en la tabla de users, es alfanumerico de 128
+
+        [JsonIgnore] //Excluye del Json para la serializacion
+        public virtual Category Category { get; set; } //Con virtual  no se mapea en la BD, esta es la llave foranea
 
         [NotMapped]
         public byte[] ImageArray { get; set; }
