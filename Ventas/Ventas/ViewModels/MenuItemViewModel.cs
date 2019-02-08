@@ -27,7 +27,7 @@
             }
         }
 
-        private void Goto()
+        private async void Goto()
         {
             if (this.PageName == "LoginPage")
             {
@@ -37,6 +37,12 @@
                 MainViewModel.GetInstance().Login = new LoginViewModel();
                 Application.Current.MainPage = new NavigationPage(new LoginPage());
             }
+            else if (this.PageName == "AboutPage")
+            {
+                App.Master.IsPresented = false;
+                await App.Navigator.PushAsync(new MapPage());
+            }
+
         }
         #endregion
     }

@@ -36,6 +36,10 @@
         [StringLength(128)]
         public string UserId { get; set; } //Es un Guid, esta definido en la tabla de users, es alfanumerico de 128
 
+        public double Latitude { get; set; }
+
+        public double Longitude { get; set; }
+
         [JsonIgnore] //Excluye del Json para la serializacion
         public virtual Category Category { get; set; } //Con virtual  no se mapea en la BD, esta es la llave foranea
 
