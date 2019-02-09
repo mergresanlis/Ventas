@@ -10,7 +10,7 @@
         [Key]
         public int ProductId { get; set; }
 
-        public int? CategoryId { get; set; } //Luego de crear las categorias y asignarselas a los productos se debe actualizar esta propieda porque no puede permitir nulls
+        public int CategoryId { get; set; } //Luego de crear las categorias y asignarselas a los productos se debe actualizar esta propieda porque no puede permitir nulls
 
         [Required]
         [StringLength(50)]

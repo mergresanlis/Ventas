@@ -8,6 +8,8 @@
     using Common.Models;
     using GalaSoft.MvvmLight.Command;
     using Helpers;
+    using Plugin.Geolocator;
+    using Plugin.Geolocator.Abstractions;
     using Plugin.Media;
     using Plugin.Media.Abstractions;
     using Services;
@@ -204,6 +206,8 @@
                 imageArray = FilesHelper.ReadFully(this.file.GetStream());
             }
 
+            var location = await this.GetLocation();
+
             var product = new Product
             {
                 Description = this.Description,
@@ -212,7 +216,8 @@
                 ImageArray = imageArray,
                 CategoryId = this.Category.CategoryId,
                 UserId = MainViewModel.GetInstance().UserASP.Id,
-                
+                Latitude = location == null ? 0 : location.Latitude,
+                Longitude = location == null ? 0 : location.Longitude,
             };
 
             var url = Application.Current.Resources["UrlAPI"].ToString();
@@ -286,6 +291,14 @@
 
             this.MyCategories = (List<Category>)response.Result;
             return true;
+        }
+
+        private async Task<Position> GetLocation()
+        {
+            var locator = CrossGeolocator.Current;
+            locator.DesiredAccuracy = 50;
+            var location = await locator.GetPositionAsync();
+            return location;
         }
 
         #endregion
