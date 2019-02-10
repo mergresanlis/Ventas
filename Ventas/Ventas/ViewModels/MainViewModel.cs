@@ -2,9 +2,10 @@
 {
     using System.Collections.ObjectModel;
     using System.Windows.Input;
+    using Common.Models;
     using GalaSoft.MvvmLight.Command;
     using Helpers;
-    using Ventas.Common.Models;
+    using Interfaces;
     using Views;
     using Xamarin.Forms;
 
@@ -114,7 +115,14 @@
 
         }
 
+        public void RegisterDevice()
+        {
+            var register = DependencyService.Get<IRegisterDevice>();
+            register.RegisterDevice();
+        }
+
         #endregion
+
         #region Commands
         public ICommand AddProductCommand
         {

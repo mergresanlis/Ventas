@@ -127,6 +127,7 @@ namespace Ventas.ViewModels
             {
                 var userASP = (MyUserASP)response.Result;
                 MainViewModel.GetInstance().UserASP = userASP;
+                MainViewModel.GetInstance().RegisterDevice();
                 Settings.UserASP = JsonConvert.SerializeObject(userASP);
             }
 
